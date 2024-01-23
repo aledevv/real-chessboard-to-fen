@@ -5,13 +5,13 @@ I made this work for my IoT University project.
 I took inspiration from the work of @shainisan. Repo **[here](https://github.com/shainisan/real-life-chess-vision?ref=blog.roboflow.com)**.
 
 ## Usage
-Download using the command:
+Download through the command:
 ```bash
 git clone https://github.com/aledevv/real-chessboard-to-fen.git
 ```
 
-The notebook app.ipynb contains all the code.
-Folder image contains pictures to process.
+The notebook _app.ipynb_ contains all the code for detection.
+_images_ folder contains pictures to process.
 
 ## Detection process
 1. User takes a photo of their chessboard
