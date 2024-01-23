@@ -10,8 +10,9 @@ Download through the command:
 git clone https://github.com/aledevv/real-chessboard-to-fen.git
 ```
 
-The notebook _app.ipynb_ contains all the code for detection.
-_images_ folder contains pictures to process.
+- The notebook _app.ipynb_ contains all the code for detection. 
+
+- _images_ folder contains pictures to process.
 
 ## Detection process
 1. User takes a photo of their chessboard
