@@ -14,6 +14,13 @@ git clone https://github.com/aledevv/real-chessboard-to-fen.git
 
 - _images_ folder contains pictures to process.
 
+> [!WARNING]
+> **Weights are tuned using my chessboard and my pieces**.
+> If you want to use yours you have to fine-tune a new model (this applies to both corner and pieces detection)
+
+> [!TIP]  
+> I found useful **[this notebook](https://colab.research.google.com/github/roboflow-ai/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb)** to train the YOLOv8 model.
+
 ## Detection process
 1. User takes a photo of their chessboard
     ![User image](assets/photo.jpeg)
