@@ -4,6 +4,11 @@ Application that leverages computer vision to detect chess pieces disposition an
 I made this work for my IoT University project.
 I took inspiration from the work of @shainisan. Repo **[here](https://github.com/shainisan/real-life-chess-vision?ref=blog.roboflow.com)**.
 
+## Usage
+Download using the command:
+
+The notebook app.ipynb contains all the code.
+Folder image contains pictures to process.
 
 ## Detection process
 1. User takes a photo of their chessboard
