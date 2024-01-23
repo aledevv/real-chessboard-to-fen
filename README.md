@@ -30,12 +30,15 @@ git clone https://github.com/aledevv/real-chessboard-to-fen.git
     ![Corners](assets/corners.png)
 4. Image is cropped and transformed from 3D to 2D and squares position is computed (red grid)
     ![Cropped and Transformed](assets/transformed.jpg)
-    > Grid is not perfectly aligned to the squares because the camera position for the detection was not been decided yet, so I created an __offset__ variable to adjust the grid afterwards.
-5. Pieces are detected
+   
+> [!NOTE]  
+> Grid is not perfectly aligned to the squares because the camera position used for the detection was not been decided yet, so I created an __offset__ variable to adjust the grid afterwards.
+
+6. Pieces are detected
 
     ![Detection](assets/detection.png)
-6. Prediction boxes are intersected with the grid to find each piece position on the board.
-7. FEN is written and can be exported to Lichess or a Stockfish API.
+7. Prediction boxes are intersected with the grid to find each piece position on the board
+8. FEN is written and can be exported to Lichess or a Stockfish API
    
     ![Lichess FEN chessboard](assets/lichess_fen.png)
 
