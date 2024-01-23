@@ -6,6 +6,9 @@ I took inspiration from the work of @shainisan. Repo **[here](https://github.com
 
 ## Usage
 Download using the command:
+```bash
+git clone 
+```
 
 The notebook app.ipynb contains all the code.
 Folder image contains pictures to process.
