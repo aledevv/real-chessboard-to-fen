@@ -7,7 +7,7 @@ I took inspiration from the work of @shainisan. Repo **[here](https://github.com
 ## Usage
 Download using the command:
 ```bash
-git clone 
+git clone https://github.com/aledevv/real-chessboard-to-fen.git
 ```
 
 The notebook app.ipynb contains all the code.
