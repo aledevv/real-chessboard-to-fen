@@ -10,7 +10,34 @@ Download through the command:
 git clone https://github.com/aledevv/real-chessboard-to-fen.git
 ```
 
-- The notebook _app.ipynb_ contains all the code for detection. 
+### Install packages
+```bash
+pip install -r requirements.txt
+```
+### Execution from CLI
+  ```bash
+   python main.py "my/image/path" depth mode
+  ```
+**Depth**
+
+Integer < 14 representing the number of moves the engine will look ahead to take the decision ([learn more](https://chessify.me/blog/what-is-depth-in-chess-different-depths-for-stockfish-and-lczero))
+
+**Modes**
+
+- _evaluation_: (write without quote) value representing which player is winning (grater than 0 if white is winning, vice versa if black is winning)
+- _best move_: (use quote) best move for white and black respectively
+- _best line_: (use quote) top engine line
+
+```bash
+   # Example
+   python main.py "images/2.jpeg" 6 "best move"
+```
+
+
+## Files and directories
+- The notebook _app.ipynb_ contains all the code for detection
+  
+- The same code in the notebook is unified in _main.py_
 
 - _images_ folder contains pictures to process.
 
