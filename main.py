@@ -1,6 +1,5 @@
 import ultralytics
 import shapely
-
 from ultralytics import YOLO
 from matplotlib.pyplot import figure
 from matplotlib import pyplot as plt
@@ -12,9 +11,6 @@ from shapely.geometry import Polygon
 import requests
 import json
 import sys
-
-
-
 
 
 # PARAMETERS
@@ -235,6 +231,7 @@ def connect_square_to_detection(detections, square, boxes):
         piece = "empty"
         return piece
 
+
 def getFEN(image):
 
     corners, boxes = detect_corners(image)
@@ -379,6 +376,7 @@ def getFEN(image):
 
     return to_FEN
 
+
 def getRequestToStockfishAPI(fen, depth, mode):
     msg = requests.get(f'https://stockfish.online/api/stockfish.php?fen={fen} w - - {depth} 11&depth=5&mode={mode}')
     # print("Status code:" + str(msg.status_code))
@@ -427,7 +425,6 @@ if __name__ == '__main__':
     elif len(sys.argv) > 4:
         print("Too many arguments!")
         sys.exit(1)
-
 
     FEN = getFEN(image)
 
