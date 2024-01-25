@@ -34,7 +34,7 @@ weights_v3 = "weights/best_detection3.pt"   # YOLOv8s
 # MODIFIABLE ........................................
 
 # TEST image
-test_image = 'images/5.jpg'
+test_image = 'images/4.jpeg'
 
 # DEFAULT values
 image = test_image
@@ -342,18 +342,14 @@ def getFEN(image):
 
     # transforms the squares to write FEN
 
-    FEN_annotation = [[a1, b1, c1, d1, e1, f1, g1, h1],
-                      [a2, b2, c2, d2, e2, f2, g2, h2],
-                      [a3, b3, c3, d3, e3, f3, g3, h3],
-                      [a4, b4, c4, d4, e4, f4, g4, h4],
-                      [a5, b5, c5, d5, e5, f5, g5, h5],
-                      [a6, b6, c6, d6, e6, f6, g6, h6],
+    FEN_annotation = [[a8, b8, c8, d8, e8, f8, g8, h8],
                       [a7, b7, c7, d7, e7, f7, g7, h7],
-                      [a8, b8, c8, d8, e8, f8, g8, h8]]
-
-    # flip columns otherwise FEN will be mirrored wrt vertical axis
-    for row in FEN_annotation:
-        row.reverse()
+                      [a6, b6, c6, d6, e6, f6, g6, h6],
+                      [a5, b5, c5, d5, e5, f5, g5, h5],
+                      [a4, b4, c4, d4, e4, f4, g4, h4],
+                      [a3, b3, c3, d3, e3, f3, g3, h3],
+                      [a2, b2, c2, d2, e2, f2, g2, h2],
+                      [a1, b1, c1, d1, e1, f1, g1, h1]]
 
     board_FEN = []
     corrected_FEN = []
