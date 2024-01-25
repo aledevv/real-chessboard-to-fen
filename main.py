@@ -11,8 +11,21 @@ import cv2
 from shapely.geometry import Polygon
 import requests
 import json
+import sys
+
+
+
+
 
 # PARAMETERS
+# ----------------------------------------------------
+
+# Stockfish modes
+stockfish_modes = {
+  "evaluation": "eval",
+  "best move": "bestmove",
+  "best line": "lines"
+}
 
 # weights for corner detection
 corners_weights = "weights/best_my_corners.pt"
@@ -22,12 +35,17 @@ weights_v1 = "weights/best_detection.pt"    # YOLOv8s
 weights_v2 = "weights/best_detection2.pt"   # YOLOv8n (recommended)
 weights_v3 = "weights/best_detection3.pt"   # YOLOv8s
 
-# Stockfish modes
-stockfish_modes = {
-  "evaluation": "eval",
-  "best move": "bestmove",
-  "best line": "lines"
-}
+# MODIFIABLE ........................................
+
+# TEST image
+test_image = 'images/5.jpg'
+
+# DEFAULT values
+image = test_image
+depth = 5
+mode = stockfish_modes["best move"]
+
+# ...................................................
 
 
 def order_points(pts):
@@ -363,19 +381,59 @@ def getFEN(image):
 
 def getRequestToStockfishAPI(fen, depth, mode):
     msg = requests.get(f'https://stockfish.online/api/stockfish.php?fen={fen} w - - {depth} 11&depth=5&mode={mode}')
-    print("Status code:" + str(msg.status_code))
+    # print("Status code:" + str(msg.status_code))
     return msg.content
 
+
+def set_stockfish_params(args):
+    _img = image
+    _depth = depth
+    _mode = mode
+
+    if len(args) >= 1:
+        opened_image = Image.open(args[1])
+        if opened_image.format.lower() in ['png', 'jpg', 'jpeg', 'bmp']:
+            _img = args[1]
+        else:
+            print("Error with the image")
+
+    if len(args) >= 2:
+        if 0 < int(args[2]) < 14:
+            _depth = args[2]
+        else:
+            print("depth must be a positive integer < 14")
+            sys.exit(1)
+
+    if len(args) >= 3:
+        inserted_mode = args[3]
+        if inserted_mode == "best move":
+            _mode = stockfish_modes["best move"]
+        elif inserted_mode == "best line":
+            _mode = stockfish_modes["best line"]
+        elif inserted_mode == "evaluation":
+            _mode = stockfish_modes["evaluation"]
+        else:
+            print("Unknown mode")
+            sys.exit(1)
+
+    return _img, _depth, _mode
+
+
+# syntax CLI: python main.py "img.jpeg" 5 "best move"
 if __name__ == '__main__':
 
-    # TEST image
-    image = 'images/5.jpg'
+    if 1 < len(sys.argv) <= 4:
+        image, depth, mode = set_stockfish_params(sys.argv)
+    elif len(sys.argv) > 4:
+        print("Too many arguments!")
+        sys.exit(1)
+
 
     FEN = getFEN(image)
 
     print("FEN: " + FEN)
 
-    response = getRequestToStockfishAPI(FEN, 5, stockfish_modes["best move"])  # Stockfish API request to get evaluation or best move/line
+    response = getRequestToStockfishAPI(FEN, depth, mode)  # Stockfish API request to get evaluation or best move/line
     json_response = json.loads(response)    # convert bytes response into json object
 
     print(json_response['data'])    # 'data' contains string with the best move
